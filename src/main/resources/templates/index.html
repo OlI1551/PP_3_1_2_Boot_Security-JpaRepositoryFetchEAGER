@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Hello page</title>
+    <style>
+        button {
+            background-color: darkslategray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1 style="color:darkgreen">Welcome to Index PAGE!</h1>
+<div>
+    <a href="/login"><button>Login</button></a>
+    <a href="/registration"><button>Registration</button></a>
+    <br>
+    <hr>
+</div>
+<div style="background-color:#96D4D4">
+    <br>
+    <th:block th:each="msg : ${messages}">
+        <h1 th:text="${msg}"></h1>
+    </th:block>
+    <br>
+</div>
+</body>
+</html>

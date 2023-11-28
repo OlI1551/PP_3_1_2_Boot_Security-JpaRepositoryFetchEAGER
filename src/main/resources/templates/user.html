@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>User page</title>
+    <style>
+        input[type="submit"] {
+            background-color: darkslategray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1 style="color:darkgreen">User, welcome spring boot security page!</h1>
+<h2><u>User Details</u></h2>
+<div style="background-color:#96D4D4">
+    <ul>
+        <li th:text="'ID: ' + ${user.id}"></li>
+        <li th:text="'First Name: ' + ${user.firstName}"></li>
+        <li th:text="'Last Name: ' + ${user.lastName}"></li>
+        <li th:text="'Email: ' + ${user.email}"></li>
+        <li th:text="'Email: ' + ${user.username}"></li>
+    </ul>
+</div>
+<div th:if="${user.id == 1}">
+    <br>
+    <a href="/admin/admin">Go to Admin Page</a>    <br>
+</div>
+<div>
+    <hr>
+    <form th:method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout!"/>
+    </form>
+</div>
+</body>
+</html>

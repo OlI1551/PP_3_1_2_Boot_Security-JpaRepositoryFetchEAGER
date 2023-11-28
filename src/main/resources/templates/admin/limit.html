@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get User ID</title>
+    <style>
+        input[type="submit"] {
+            background-color: darkslategray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button {
+            background-color: darkslategray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1 style="color:darkgreen">Users List Limit</h1>
+<form th:method="post" th:action="@{/admin/limit}">
+    <div style="background-color: #96D4D4">
+        <br>
+        <label for="limit">Enter Users List Limit:</label>
+        <input type="number" id="limit" name="limit" required>
+        <p style="color:red" th:if="${error}" th:text="${error}"></p>
+        <br>
+        <br>
+    </div>
+    <div>
+        <br>
+        <input type="submit" value="Get Limited Users List!">
+    </div>
+</form>
+<div>
+    <br>
+    <a href="/admin/admin">Go to Admin Page</a>
+</div>
+<div>
+    <hr>
+    <form th:method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout!"/>
+    </form>
+</div>
+</body>
+</html>

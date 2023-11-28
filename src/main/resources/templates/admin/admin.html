@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Admin page</title>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/style.css}"/>
+    <style>
+        table, th, td {
+            border: 1px double darkslategray;
+        }
+
+        table {
+            border-spacing: 3px;
+        }
+
+        th, td {
+            background-color: #96D4D4;
+            padding: 5px;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        table td:nth-child(1) {
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: darkslategray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1 style="color:darkgreen">Admin, welcome spring boot security page!</h1>
+<div>
+    <h2><u>Admin Details</u></h2>
+    <ul style="background-color:#96D4D4">
+        <li th:text="'ID: ' + ${admin.id}"></li>
+        <li th:text="'First Name: ' + ${admin.firstName}"></li>
+        <li th:text="'Last Name: ' + ${admin.lastName}"></li>
+        <li th:text="'Email: ' + ${admin.email}"></li>
+    </ul>
+</div>
+<div>
+    <h1 th:if="${error}" th:text="${error}"></h1>
+</div>
+<div th:if="${users}">
+    <h2><u>Users List</u></h2>
+    <p style="color:red" th:if="${warning}" th:text="${warning}"></p>
+    <h2><table>
+        <tr>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Authorities</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:utext="${user.getId()}"></td>
+            <td th:utext="${user.getFirstName()}"></td>
+            <td th:utext="${user.getLastName()}"></td>
+            <td th:utext="${user.getEmail()}"></td>
+            <td th:utext="${user.getUsername()}"></td>
+            <td th:utext="${user.getAuthorities()}"></td>
+        </tr>
+    </table></h2>
+</div>
+<div>
+    <br>
+    <a href="/admin/create-user"><b style="font-size: 20px; font-weight: 900; text-shadow: 3px 2px cornflowerblue">C</b>reate User</a>
+    <br>
+    <a href="/limit"><b style="font-size: 20px; font-weight: 900; text-shadow: 3px 2px cornflowerblue">R</b>ead Limited Users List</a>
+    <br>
+    <a href="/read-id"><b style="font-size: 20px; font-weight: 900; text-shadow: 3px 2px cornflowerblue">R</b>ead User</a>
+    <br>
+    <a href="/edit-id"><b style="font-size: 20px; font-weight: 900; text-shadow: 3px 2px cornflowerblue">U</b>pdate User</a>
+    <br>
+    <a href="/delete-id"><b style="font-size: 20px; font-weight: 900; text-shadow: 3px 2px cornflowerblue">D</b>elete User</a>
+    <br>
+    <br>
+    <a href="/user">Go to User Page</a>
+</div>
+<div>
+    <hr>
+    <form th:method="POST" th:action="@{/logout}">
+        <input type="submit" value="Logout!"/>
+    </form>
+</div>
+</body>
+</html>

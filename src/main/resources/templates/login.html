@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <style>
+        input[type="submit"] {
+            background-color: darkslategray;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1 style="color:darkgreen">Welcome to Login PAGE!</h1>
+<form name="f" method="post" action="/process_login">
+    <div style="background-color: #96D4D4">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <br>
+        <label for="username">Enter username: </label>
+        <input type="text" name="username" id="username"/>
+        <br>
+        <br>
+        <label for="password">Enter password: </label>
+        <input type="password" name="password" id="password"/>
+        <p th:if="${param.error}" style="color: red">
+            Username is wrong or password is wrong</p>
+        <br>
+        <br>
+    </div>
+    <div>
+        <hr>
+        <input type="submit" value="Log in!"/>
+    </div>
+</form>
+<div>
+    <br>
+    <a href="/">Go to Welcome Page</a>
+</div>
+</body>
+</html>
