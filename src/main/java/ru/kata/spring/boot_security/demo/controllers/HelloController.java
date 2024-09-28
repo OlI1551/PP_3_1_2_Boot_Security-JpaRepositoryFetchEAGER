@@ -23,6 +23,8 @@ public class HelloController {
 		messages.add("And I can represent you");
 		messages.add("a Spring Boot Security application");
 		messages.add("with optional user roles!");
+		messages.add("Please, register users before login with the buttons up here...");
+		messages.add("The first user will be assigned the DB administrator -)");
 		model.addAttribute("messages", messages);
 		return "index";
 	}
